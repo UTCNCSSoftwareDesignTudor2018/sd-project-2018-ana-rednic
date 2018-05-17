@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/Ana/Desktop/Client.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/ArtMuseumApplication-Client/src/Client.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" mainClassHandleIdentifier="=ArtMuseumApplication-Client/src\/main\/java&lt;startClient{StartClient.java[StartClient" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <file path="/ArtMuseumApplication-Client/pom.xml"/>
+        <folder path="/ArtMuseumApplication-Client/src"/>
+        <javaElement handleIdentifier="=ArtMuseumApplication-Client/src\/main\/java"/>
+        <javaElement handleIdentifier="=ArtMuseumApplication-Client/src\/test\/resources"/>
+        <file path="/ArtMuseumApplication-Client/.classpath"/>
+        <javaElement handleIdentifier="=ArtMuseumApplication-Client/src\/test\/java"/>
+        <javaElement handleIdentifier="=ArtMuseumApplication-Client/src\/main\/resources"/>
+        <file path="/ArtMuseumApplication-Client/.project"/>
+        <folder path="/ArtMuseumApplication-Client/target"/>
+    </selectedElements>
+</jardesc>
