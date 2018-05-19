@@ -7,8 +7,8 @@ import repository.CollectionRepo;
 
 public class CollectionBusinessLogic {
 	public CollectionRepo arepo=new CollectionRepo();
-	public void insertCollection(Collection a) {
-		arepo.insertCollection(a);
+	public void insertCollection(Collection c) {
+		arepo.insertCollection(c);
 	}
 	public void updateCollection(Collection a) {
 		arepo.updateCollection(a);
@@ -21,5 +21,8 @@ public class CollectionBusinessLogic {
 	}
 	public List<Collection> allCollectionsOfAVisitor(int id){
 		return arepo.allCollectionsOfAVisitor(id);
+	}
+	public Collection getCollectionByName(String name) {
+		return arepo.getCollectionByName(name);
 	}
 }

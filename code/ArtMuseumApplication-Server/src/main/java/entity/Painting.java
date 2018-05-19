@@ -1,12 +1,17 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +23,7 @@ public class Painting implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int painting_id;
 	@Column(name="image")
-	private byte[] image; // PAINTING IMAGE 
+	private byte[] image;	
 	@Column(name="title")
 	private String title;
 	@Column(name="author")
@@ -28,6 +33,15 @@ public class Painting implements Serializable {
 	@Column(name="qrcode")
 	private byte[] qrcode; // QR CODE IMAGE
 	
+	@ManyToMany(mappedBy = "listOfPaintings",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Collection> listOfCollections = new LinkedList<Collection>();
+
+	public List<Collection> getListOfCollections() {
+		return listOfCollections;
+	}
+	public void setListOfCollections(List<Collection> listOfCollections) {
+		this.listOfCollections = listOfCollections;
+	}
 	public Painting() {
 	}
 	public int getPainting_id() {
@@ -42,17 +56,11 @@ public class Painting implements Serializable {
 	public void setQrcode(byte[] qrcode) {
 		this.qrcode = qrcode;
 	}
-	public int getId() {
-		return painting_id;
-	}
-	public void setId(int id) {
-		this.painting_id = id;
-	}
 	public byte[] getImage() {
 		return image;
 	}
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setImage(byte[] bFile) {
+		this.image = bFile;
 	}
 	public String getTitle() {
 		return title;

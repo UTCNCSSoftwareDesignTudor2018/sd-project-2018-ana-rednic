@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import entity.Collection;
 
@@ -13,7 +14,7 @@ public class CollectionRepo {
 	public void insertCollection(Collection a) {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
         EntityManager eniEntityManager = entityManagerFactory.createEntityManager();
-        eniEntityManager.getTransaction().begin();
+        eniEntityManager.getTransaction().begin();      
         eniEntityManager.persist(a);
         eniEntityManager.getTransaction().commit();
         eniEntityManager.close();
@@ -78,5 +79,17 @@ public class CollectionRepo {
 			}
 		}
 		return CollectionsVisitor;
+	}
+	public Collection getCollectionByName(String name) {
+		EntityManagerFactory entityManagerFactory = Persistence
+				.createEntityManagerFactory("org.hibernate.tutorial.jpa");
+		EntityManager eniEntityManager = entityManagerFactory.createEntityManager();
+		eniEntityManager.getTransaction().begin();
+		Query q = eniEntityManager.createQuery("SELECT c FROM Collection c WHERE c.name='"+name+"'");
+		Collection c=(Collection) q.getSingleResult();
+		eniEntityManager.getTransaction().commit();
+		eniEntityManager.close();
+		entityManagerFactory.close();
+		return c;
 	}
 }

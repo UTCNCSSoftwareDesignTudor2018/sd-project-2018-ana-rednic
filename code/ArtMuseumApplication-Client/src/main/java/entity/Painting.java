@@ -1,6 +1,9 @@
 package entity;
 
+import java.awt.image.BufferedImage;
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Painting implements Serializable {
 
@@ -11,6 +14,15 @@ public class Painting implements Serializable {
 	private String author;
 	private String description;
 	private byte[] qrcode; // QR CODE IMAGE
+	private List<Collection> listOfCollections = new LinkedList<Collection>();
+	
+
+	public List<Collection> getListOfCollections() {
+		return listOfCollections;
+	}
+	public void setListOfCollections(List<Collection> listOfCollections) {
+		this.listOfCollections = listOfCollections;
+	}
 	public Painting() {
 	}
 	public int getPainting_id() {

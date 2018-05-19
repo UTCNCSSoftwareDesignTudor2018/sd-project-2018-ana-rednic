@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,9 +27,18 @@ public class Collection implements Serializable {
     public int collection_id;
 	@Column(name="name")
 	private String name;
-	@ManyToMany(cascade = CascadeType.ALL)
+	/*@Column(name="listOfPaintings")
+	private List<Painting> listOfPaintings = new LinkedList<Painting>();
+*/
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "painting_collection", joinColumns = { @JoinColumn(name = "collection_id") }, inverseJoinColumns = { @JoinColumn(name = "painting_id") })
 	private List<Painting> listOfPaintings = new LinkedList<Painting>();
+	
+	@Override
+	public String toString() {
+		return "Collection [collection_id=" + collection_id + ", name=" + name + ", listOfPaintings=" + listOfPaintings
+				+ ", visitor=" + visitor + "]";
+	}
 	@ManyToOne
 	private Visitor visitor;
 	
