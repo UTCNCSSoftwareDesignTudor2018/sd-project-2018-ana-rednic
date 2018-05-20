@@ -2,15 +2,19 @@ package presentation;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import entity.Painting;
 import entity.Visitor;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -24,6 +28,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JList;
 
 public class HomeView {
 
@@ -48,9 +53,18 @@ public class HomeView {
 		txtEnterSomethingTo.setForeground(Color.GRAY);
 		txtEnterSomethingTo.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		txtEnterSomethingTo.setText("Enter something to search...");
+		txtEnterSomethingTo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtEnterSomethingTo.setText("");
+				txtEnterSomethingTo.setForeground(Color.BLACK);
+				txtEnterSomethingTo.setFont(new Font("Tahoma", Font.PLAIN, 11));
+			}
+		});
 		txtEnterSomethingTo.setBounds(24, 23, 166, 20);
 		frmHome.getContentPane().add(txtEnterSomethingTo);
 		txtEnterSomethingTo.setColumns(10);
+		
 		
 		JButton btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener() {
@@ -61,10 +75,8 @@ public class HomeView {
 				System.out.println("Search for something");
 				try {
 					List<Object> response = processInformation(list);
-					Painting sessionPainting=(Painting) response.get(0);
-					if (sessionPainting!=null) new PaintingView(sessionPainting);
-					else JOptionPane.showMessageDialog(null, "Couldn't find your search");				
-					} catch (IOException e1) {
+						new SearchView(response);
+				} catch (IOException e1) {
 						JOptionPane.showMessageDialog(null, "Something went wrong");					}
 			}
 		});

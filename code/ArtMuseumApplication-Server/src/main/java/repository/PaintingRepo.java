@@ -6,8 +6,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
+import startServer.Expression;
+import startServer.OrExpression;
 import entity.Painting;
+import startServer.TerminalExpression;
 
 public class PaintingRepo {
 	public void insertPainting(Painting a) {
@@ -79,7 +81,32 @@ public class PaintingRepo {
 		}
 		return PaintingsCollection;
 	}*/
-	public Painting search(String toSearch) {
-		return null;
+	public List<Object> search(String toSearch) {
+		List<Object> returnList = new ArrayList<Object>();
+		List<Painting> foundPaintings=new ArrayList<Painting>();
+		List<Painting> listPaintings=this.viewAllPaintings();
+		String[] words=toSearch.split(" ");
+		for (Painting painting:listPaintings) {
+			for (String string:words) {
+				if (painting.getTitle().toLowerCase().contains(string.toLowerCase())) {
+					foundPaintings.add(painting);
+					break;
+				}
+			}
+		}
+		returnList.add(foundPaintings);
+		Expression isBaimarean = baimareanExpression();
+		if (isBaimarean.interpret(toSearch)) {
+			String interpretation=new String("Did you know that during 117 years of painting school over 4.000 fine artists came to Baia Mare from the most diverse cultural spaces of Europe?");
+			returnList.add(interpretation);
+		}
+		return returnList;
+	}
+	// Rule: "baimarean/baimareana"
+	public Expression baimareanExpression() {
+		Expression baimarean = new TerminalExpression("baimarean");
+		Expression baimareana = new TerminalExpression("baimareana");
+		return new OrExpression(baimarean, baimareana);
+		
 	}
 }

@@ -22,7 +22,7 @@ public class PaintingBusinessLogic {
 	/*public List<Painting> allPaintingsOfACollection(int id){
 		return arepo.allPaintingsOfACollection(id);
 	}*/
-	public Painting search(String toSearch) {
+	public List<Object> search(String toSearch) {
 		return arepo.search(toSearch);
 	}
 }
