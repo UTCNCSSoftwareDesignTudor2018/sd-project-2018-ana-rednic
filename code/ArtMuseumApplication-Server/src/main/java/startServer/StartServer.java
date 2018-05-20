@@ -6,6 +6,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
 
+import chainOfResponsibility.ConnectionChain;
+
 public class StartServer {
 	// src/main/resources/Paintings/image1.jpg
 	public static List<Socket> allClientsList= new ArrayList<Socket>();

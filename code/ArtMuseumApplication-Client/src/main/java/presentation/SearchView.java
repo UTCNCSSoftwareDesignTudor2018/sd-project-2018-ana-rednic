@@ -34,9 +34,6 @@ public class SearchView {
 		frmSearchResults.setVisible(true);
 	}
 
-	/**
-	 * @wbp.parser.entryPoint
-	 */
 	private void initialize() {
 		frmSearchResults = new JFrame();
 		frmSearchResults.setTitle("Search results");
@@ -58,13 +55,15 @@ public class SearchView {
 		JLabel lblThisIsThe = new JLabel("This is the result of your search: ");
 		lblThisIsThe.setBounds(10, 13, 200, 14);
 		frmSearchResults.getContentPane().add(lblThisIsThe);
-		
-		JTextPane textPane_interpretation = new JTextPane();
-		String interpretation = (String) response.get(1);
-		textPane_interpretation.setText(interpretation);
-		textPane_interpretation.setBounds(10, 125, 200, 90);
-		frmSearchResults.getContentPane().add(textPane_interpretation);
-		
+		if (response.size() > 1) {
+			String interpretation = (String) response.get(1);
+			if (!interpretation.equals(null)) {
+				JTextPane textPane_interpretation = new JTextPane();
+				textPane_interpretation.setText(interpretation);
+				textPane_interpretation.setBounds(10, 125, 200, 90);
+				frmSearchResults.getContentPane().add(textPane_interpretation);
+			}
+		}
 		jlist.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

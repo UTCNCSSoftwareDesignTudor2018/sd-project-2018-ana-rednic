@@ -22,7 +22,6 @@ public class InsertVisitorTest {
 		List<Visitor> newlistV=vlogic.viewAllVisitors();
 		int newNumber=newlistV.size();
 		assertEquals(true,newNumber==currentNumber+1);
-		//fail("Insertion failed");
 	}
 
 }

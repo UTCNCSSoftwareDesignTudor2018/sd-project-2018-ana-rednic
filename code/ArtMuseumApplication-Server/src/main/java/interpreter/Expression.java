@@ -1,4 +1,4 @@
-package startServer;
+package interpreter;
 
 public interface Expression {
 	public boolean interpret(String context);

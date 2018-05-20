@@ -6,10 +6,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import startServer.Expression;
-import startServer.OrExpression;
+
 import entity.Painting;
-import startServer.TerminalExpression;
+import interpreter.Expression;
+import interpreter.OrExpression;
+import interpreter.TerminalExpression;
 
 public class PaintingRepo {
 	public void insertPainting(Painting a) {

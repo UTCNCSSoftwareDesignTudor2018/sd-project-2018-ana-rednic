@@ -1,4 +1,4 @@
-package startServer;
+package interpreter;
 
 public class TerminalExpression implements Expression {
 

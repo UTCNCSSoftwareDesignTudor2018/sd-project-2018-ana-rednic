@@ -1,4 +1,4 @@
-package startServer;
+package interpreter;
 
 public class AndExpression implements Expression {
 
